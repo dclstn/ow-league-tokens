@@ -6,4 +6,4 @@ COPY . .
 
 RUN pip install -r ./requirements.txt
 
-CMD [ "python", "./src/main.py", "nomenu", "--owl", "--owc", "--ids", "1123", "2432", "and so on..." ]
+CMD [ "python", "./src/main.py", "nomenu", "--owl", "--owc", "--ids", "404727544", "465150740", "402903373", "404970700", "1128139170" ]
