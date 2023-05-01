@@ -7,7 +7,7 @@ P = lambda msg: print(get_console_message('&y' + msg))
 
 
 def add_profile(config):
-    allowed_characters = set(list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012456789-_'))
+    allowed_characters = set(list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'))
     allowed_chars_repr = '&gA-Z&r, &ga-z&r, &g0-9&r, &g-&r, &g_&r'
     P('\nOne account - one (Gmail) profile. '
       'I recommend adding one account at a time so you know what account you log into.')
@@ -82,7 +82,7 @@ def menu():
         options = [
             (
                 f'Start app!',
-                lambda c: None
+                lambda c: bootstrap(c)
             ),
             (
                 f'Add profile &g[+]',
@@ -97,7 +97,7 @@ def menu():
                 view_profiles
             ),
             (
-                f'Switch headless mode {"&g[enabled]" if config["headless"] else "&r[disabled]"} &m(experimental, might not work!)',
+                f'Switch headless mode {"&g[enabled]" if config["headless"] else "&r[disabled]"} &m(experimental!)',
                 lambda c: switch_setting(c, 'headless')
             ),
             (
@@ -121,13 +121,7 @@ def menu():
             continue
 
         option_idx = int(option) - 1
-
-        if option_idx == 0:
-            break
-
         option_callback = options[option_idx][1]
-        option_callback(config)
+        option_callback(config)  # noqa
 
         continue
-
-    bootstrap(config)
